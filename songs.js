@@ -16,7 +16,11 @@ const artists = [
 function renderArtists(nameList) {
     let result = "<ul>";
     for (let item of nameList) {
-        result += `<li>${item.name} <button>Get Quote</button></li>`;
+        result += `
+            <li>
+                ${item.name} 
+                <button data-id="${item.id}">Get Quote</button>
+            </li>`;
     }
     result += "</ul>";
 
@@ -24,3 +28,11 @@ function renderArtists(nameList) {
 }
 
 renderArtists(artists);
+
+function jsArtistsContainerClicked(event) {
+    if (event.target.tagName === "BUTTON") {
+        alert(event.target.dataset.id);
+    }
+}
+
+document.querySelector(".js-artists").addEventListener("click", jsArtistsContainerClicked);
