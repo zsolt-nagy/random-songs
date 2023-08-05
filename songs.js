@@ -13,6 +13,26 @@ const artists = [
     },
 ];
 
+function loadArtist(searchText) {
+    let url = "https://songsexcerpt.mohd.app/artists/search";
+    let config = {
+        method: "POST",
+        body: JSON.stringify({
+            artist_name: searchText,
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            "Access-Control-Allow-Origin": "*",
+            Accept: "application/json",
+        },
+        mode: "cors",
+    };
+
+    fetch(url, config)
+        .then((data) => data.json())
+        .then(renderArtists);
+}
+
 function renderArtists(nameList) {
     let result = "<ul>";
     for (let item of nameList) {
@@ -55,7 +75,7 @@ document.querySelector(".js-artists").addEventListener("click", jsArtistsContain
 function searchFormSubmitted(event) {
     event.preventDefault();
     let inputField = document.querySelector('[name="search-artist"]');
-    console.log(inputField.value);
+    loadArtist(inputField.value);
     inputField.value = "";
 }
 
