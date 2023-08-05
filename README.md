@@ -58,7 +58,7 @@ Response (may vary because it is random):
 
 ## Notes 
 
-- `innerHTML` was used in the code to simplify markup generation. The unsafe nature of `innerHTML` does not pose a real threat in this application for learning purposes. In the unlikely case the API was hacked, we'll add defenses on client-side so that we don't render external malicious content.
+- `innerHTML` was used in the code to simplify markup generation. The unsafe nature of `innerHTML` does not pose a real threat in this application for learning purposes. In the unlikely case the API was hacked, we'll add defenses on client-side so that we don't render external malicious content (source: https://www.dhairyashah.dev/posts/why-innerhtml-is-a-bad-idea-and-how-to-avoid-it/).
 
 ## Sources  
 

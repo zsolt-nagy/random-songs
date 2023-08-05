@@ -29,9 +29,24 @@ function renderArtists(nameList) {
 
 renderArtists(artists);
 
+function renderQuote(response) {
+    document.querySelector(".js-quote").innerHTML = `
+       <h2>${response.artist}: ${response.song}</h2>
+       <p>
+          ${response.lyrics_excerpt.replaceAll("\n", "<br />")} 
+       </p>
+    `;
+}
+
+function displaySongQuote(artistId) {
+    fetch("https://songsexcerpt.mohd.app/api/v1/getRandomExcerpt?artists=" + artistId)
+        .then((data) => data.json())
+        .then(renderQuote);
+}
+
 function jsArtistsContainerClicked(event) {
     if (event.target.tagName === "BUTTON") {
-        alert(event.target.dataset.id);
+        displaySongQuote(event.target.dataset.id);
     }
 }
 
